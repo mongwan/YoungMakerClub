@@ -5,13 +5,13 @@ Young Maker Club Development Project Software Requirement Specification   V 1.0
 #작성자: 심재광
 
 0. 용어
-	0. 사용자 = Product user, Young maker, 
-	0. 서버 = Product main server,
-	0. 방문자 = Visitor, 외부 접근 포함
-	0. 제품 = Young Maker Club Development project software, product
+	0.1 사용자 = Product user, Young maker, 
+	0.2 서버 = Product main server,
+	0.3 방문자 = Visitor, 외부 접근 포함
+	0.4 제품 = Young Maker Club Development project software, product
 
 1. 기능적 요구사항
-	1-1. 사용자 계정은 OAuth 방식을 통해 개인계정을 관리한다.
+	1. 사용자 계정은 OAuth 방식을 통해 개인계정을 관리한다.
 	1-2. 사용자는 OPP를 프로젝트별로 정리한다.
 	1-3. 사용자는 최대 3개의 개인 프로젝트를 생성할 수 있다.
 	1-4. 개인프로젝트는 (프로젝트명),(메이커 명),(거점명), (프로젝트 시작일),(프로젝트 최근 업로드),(프로젝트 OPP 갯수) 정보를 포함한다.
