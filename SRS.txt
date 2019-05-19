@@ -1,6 +1,6 @@
-//Young Maker Club Development Project Software Requirement Specification V 1.0
-//영메이커 클럽 개발 프로젝트 요구사항 명세서 V 1.0
-//작성자: 심재광
+##Young Maker Club Development Project Software Requirement Specification   V 1.0
+##영메이커 클럽 개발 프로젝트 요구사항 명세서 V 1.0
+##작성자: 심재광
 
 0. 용어
 	0.1 사용자 = Product user, Young maker, 
@@ -12,7 +12,7 @@
 	1-1. 사용자 계정은 OAuth 방식을 통해 개인계정을 관리한다.
 	1-2. 사용자는 OPP를 프로젝트별로 정리한다.
 	1-3. 사용자는 최대 3개의 개인 프로젝트를 생성할 수 있다.
-	1-4. 개인프로젝트는 (프로젝트명),(메이커 명),(거점명), (프로젝트 시작일),(프로젝트 최근 업로드), 		(프로젝트 OPP 갯수) 정보를 포함한다.
+	1-4. 개인프로젝트는 (프로젝트명),(메이커 명),(거점명), (프로젝트 시작일),(프로젝트 최근 업로드),(프로젝트 OPP 갯수) 정보를 포함한다.
 	1-5. OPP는 (프로젝트명),(메이커 명),(OPP 제목),(OPP 작성일),(댓글 갯수)정보를 포함한다.
 	1-6. OPP는 문답형식으로 작성된다.
 		1-6-1. 서버는 사용자에게 "이번 OPP의 제목을 입력해주세요" 를 출력한다.
@@ -46,7 +46,7 @@
 3. 비기능적 요구사항
 	3-1. 제품 구현에는 Node.js 와 Google cloud platform 을 이용한다.
 	3-2. 최소사양인 테블릿(1.8GHz / 2GB RAM/ Android 6.0)에서 구동이 가능해야 한다.
-	3-3. 제품은 Chrome(Mobile, PC)/ Safari(Mobile, PC)/ Filefox(Mobile, PC)에서 사용 가능		해야한다.
+	3-3. 제품은 Chrome(Mobile, PC)/ Safari(Mobile, PC)/ Filefox(Mobile, PC)에서 사용가능 해야한다.
 	3-4. 제품의 클라우드 사용료는 50,000₩/월 을 넘지 않아야한다.
 
 4. 사용자 편의사항 요구사항
