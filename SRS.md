@@ -1,6 +1,6 @@
 Young Maker Club Development Project Software Requirement Specification   V 1.0
 =======================================================================
-##영메이커 클럽 개발 프로젝트 요구사항 명세서 V 1.0 
+#영메이커 클럽 개발 프로젝트 요구사항 명세서 V 1.0 
 ##작성자: 심재광
 
 0. 용어
