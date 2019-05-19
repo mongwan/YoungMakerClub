@@ -1,11 +1,12 @@
 Young Maker Club Development Project Software Requirement Specification   V 1.0
 =======================================================================
+
 #영메이커 클럽 개발 프로젝트 요구사항 명세서 V 1.0 
-##작성자: 심재광
+#작성자: 심재광
 
 0. 용어
-	0.1 사용자 = Product user, Young maker, 
-	0.2 서버 = Product main server,
+	>0.1 사용자 = Product user, Young maker, 
+	>>0.2 서버 = Product main server,
 	0.3 방문자 = Visitor, 외부 접근 포함
 	0.4 제품 = Young Maker Club Development project software, product
 
