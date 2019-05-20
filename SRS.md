@@ -3,6 +3,7 @@ Young Maker Club Development Project Software Requirement Specification   V 1.01
 
 영메이커 클럽 개발 프로젝트 요구사항 명세서 V 1.01  작성자: 심재광
 ---------------------------------------------------
+![profile](https://post-phinf.pstatic.net/MjAxNzA4MThfMjg0/MDAxNTAzMDM5MTQwMjIz._-cT-JWvkVI16C82M9f7mv-l4gH6OABMnwXRzvOVJkYg.pKoHdaOT4C2mjZ2-Spxt7mpIAhut_j2L_Rf0iitJ7_0g.JPEG/%EC%8B%AC%EC%9E%AC%EA%B4%91_%EB%A9%94%EC%9D%B4%EC%BB%A4_%282%29.jpg?type=w1200 "profile")
 1. 용어
 	1. 사용자 = Product user, Young maker, 
 	1. 서버 = Product main server,
