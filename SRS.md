@@ -1,7 +1,7 @@
-Young Maker Club Development Project Software Requirement Specification   V 1.0
+Young Maker Club Development Project Software Requirement Specification   V 1.01
 =======================================================================
 
-영메이커 클럽 개발 프로젝트 요구사항 명세서 V 1.0  작성자: 심재광
+영메이커 클럽 개발 프로젝트 요구사항 명세서 V 1.01  작성자: 심재광
 ---------------------------------------------------
 1. 용어
 	1. 사용자 = Product user, Young maker, 
@@ -11,6 +11,7 @@ Young Maker Club Development Project Software Requirement Specification   V 1.0
 
 1. 기능적 요구사항
 	1. 사용자 계정은 OAuth 방식을 통해 개인계정을 관리한다.
+		- 제품은 Google, Naver의 OAuth API를 사용한다.
 	1. 사용자는 OPP를 프로젝트별로 정리한다.
 	1. 사용자는 최대 3개의 개인 프로젝트를 생성할 수 있다.
 	1. 개인프로젝트는 (프로젝트명),(메이커 명),(거점명), (프로젝트 시작일),(프로젝트 최근 업로드),(프로젝트 OPP 갯수) 정보를 포함한다.
@@ -24,6 +25,7 @@ Young Maker Club Development Project Software Requirement Specification   V 1.0
 		- 서버는 사용자에게 "활동 사진을 업로드 해주세요"를 출력한다.
 		- 사용자는 로컬저장서에서 사진을 선택할 수 있다.
 		- 서버는 입력받은 정보를 종합해 지정된 프로젝트에 OPP를 저장한다.
+	1. 사용자의 모든 데이터는 클라우드플랫폼에 의해 관리되어야 한다.
 	1. OPP의 모든 구성내용은 다양한 검색 방식을 통해 접근가능하여야 한다.
 	1. 방문자는 OPP에 반응과 댓글을 남길 수 있다.
 	1. 제품은 Web 기반으로 개발하며 웹 기반으로 데이터가 처리되어야 한다.
@@ -57,4 +59,4 @@ Young Maker Club Development Project Software Requirement Specification   V 1.0
 1. 개발 부가사항
 	1. V1.@는 데이터 저장과 제품 구현을 목적으로 한다.
 	1. V1.@는 디자인적 요소를 제외한 매우 직관적인 UI, 기능에 집중한다.
-	1. V1.@는 6월 15일까지 개발후 적용한다. 
+	1. V1.@는 6월 20일까지 개발후 적용한다. 
