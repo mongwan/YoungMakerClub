@@ -2,50 +2,18 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
-
-var template = {
-	HTML:function (title, list, body, control){
-		return `
-		<!doctype html>
-		<html>
-		<head>
-			<title>WEB1 - ${title} </title>
-			<meta charset="utf-8">
-		</head>
-		<body>
-			<h1><a href="/">WEB</a></h1>
-			${list}
-			${control}
-			${body}
-		</body>
-		</html>
-		`;
-	},
-	list:function (filelist){
-		var list = '<ul>';
-
-		var i = 0;
-		while(i < filelist.length){
-			list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
-			i = i + 1;
-		}
-
-		list = list + '</ul>';
-
-		return list;
-	}
-};
+var template = require('./lib/template.js');
+var path = require('path');
+var sanitizeHtml = require('sanitize-html');
 
 var app = http.createServer(function(request,response){
     var _url = request.url;
 	var queryData = url.parse(_url, true).query;
 	var pathname = url.parse(_url, true).pathname;
 	
-	console.log(pathname);
-	
 	if(pathname === '/'){
 		if(queryData.id === undefined){
-			fs.readdir('/workspace/Nodejs/YoungMakerClub/hanchaa/data', function(error, filelist){
+			fs.readdir('./data', function(error, filelist){
 				var title = 'Welcome';
 				var description ='Hello, Node.js';
 				
@@ -58,17 +26,20 @@ var app = http.createServer(function(request,response){
 		}
 		
 		else{
-			fs.readdir('/workspace/Nodejs/YoungMakerClub/hanchaa/data', function(error, filelist){
-				fs.readFile(`/workspace/Nodejs/YoungMakerClub/hanchaa/data/${queryData.id}`, 'utf8', function(err, description){
+			fs.readdir('./data', function(error, filelist){
+				var filteredId = path.parse(queryData.id).base;
+				fs.readFile(`./data/${filteredId}`, 'utf8', function(err, description){
 					var title = queryData.id;
+					var sanitizedTitle = sanitizeHtml(title);
+					var sanitizedDescription = sanitizeHtml(description, {allowedTags:['h1']});
 					
 					var list = template.list(filelist);
 					
-					var html =template.HTML(title, list, `<h2>${title}</h2>${description}`,
+					var html = template.HTML(sanitizedTitle, list, `<h2>${sanitizedTitle}</h2>${sanitizedDescription}`,
 					`<a href="/create">create</a>
-					 <a href="/update?id=${title}">update</a>
+					 <a href="/update?id=${sanitizedTitle}">update</a>
 					 <form action="/delete_process" method="post">
-						<input type="hidden" name="id" value="${title}"}>
+						<input type="hidden" name="id" value="${sanitizedTitle}"}>
 						<input type="submit" value="delete">
 					</form>
 					`);
@@ -81,7 +52,7 @@ var app = http.createServer(function(request,response){
 	
 	else if(pathname === '/create'){
 		if(queryData.id === undefined){
-			fs.readdir('/workspace/Nodejs/YoungMakerClub/hanchaa/data', function(error, filelist){
+			fs.readdir('./data', function(error, filelist){
 				var title = 'WEB - create';
 				
 				var list = template.list(filelist);
@@ -115,7 +86,7 @@ var app = http.createServer(function(request,response){
 			var title = post.title;
 			var description = post.description;
 			
-			fs.writeFile(`/workspace/Nodejs/YoungMakerClub/hanchaa/data/${title}`, description, 'utf8', function(err){
+			fs.writeFile(`./data/${title}`, description, 'utf8', function(err){
 			response.writeHead(302, {Location: `/?id=${title}`});
 			response.end();
 			});
@@ -123,8 +94,9 @@ var app = http.createServer(function(request,response){
 	}
 	
 	else if(pathname === '/update'){
-		fs.readdir('/workspace/Nodejs/YoungMakerClub/hanchaa/data', function(error, filelist){
-			fs.readFile(`/workspace/Nodejs/YoungMakerClub/hanchaa/data/${queryData.id}`, 'utf8', function(err, description){
+		fs.readdir('./data', function(error, filelist){
+			var filteredId = path.parse(queryData.id).base;
+			fs.readFile(`./data/${filteredId}`, 'utf8', function(err, description){
 				var title = queryData.id;
 
 				var list = template.list(filelist);
@@ -161,8 +133,8 @@ var app = http.createServer(function(request,response){
 			var title = post.title;
 			var description = post.description;
 			
-			fs.rename(`/workspace/Nodejs/YoungMakerClub/hanchaa/data/${id}`, `/workspace/Nodejs/YoungMakerClub/hanchaa/data/${title}`, function(error){
-				fs.writeFile(`/workspace/Nodejs/YoungMakerClub/hanchaa/data/${title}`, description, 'utf8', function(err){
+			fs.rename(`./data/${id}`, `./${title}`, function(error){
+				fs.writeFile(`./data/${title}`, description, 'utf8', function(err){
 				response.writeHead(302, {Location: `/?id=${title}`});
 				response.end();
 			});
@@ -181,7 +153,8 @@ var app = http.createServer(function(request,response){
 			var post = qs.parse(body);
 			var id = post.id;
 			
-			fs.unlink(`/workspace/Nodejs/YoungMakerClub/hanchaa/data/${id}`, function(error){
+			var filteredId = path.parse(id).base;
+			fs.unlink(`./data/${filteredId}`, function(error){
 				response.writeHead(302, {Location: `/`});
 				response.end();
 			});
